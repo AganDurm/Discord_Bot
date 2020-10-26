@@ -54,8 +54,8 @@ client.on('message', async message => {
         await message.channel.send(embed);
     } else if(cmd === 'insta') {
         let url = await fetch('https://www.instagram.com/_fajta/?__a=1').then(url => url.json());
-
         let embed = new MessageEmbed();
+
         embed.addField(await url.graphql.user.full_name,'Zapratite me i na Insta');
         embed.addField('Link:', 'https://www.instagram.com/_fajta/');
         embed.setThumbnail(await url.graphql.user.profile_pic_url);
