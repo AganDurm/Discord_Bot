@@ -33,8 +33,6 @@ client.on('message', async message => {
     const cmd = args.shift().toLowerCase();
     if(cmd === 'halo') {
         await message.channel.send("Halo " + author + ` :blush:`);
-    } else if(cmd === 'emili') {
-        await message.channel.send('Emili je ljubav moja najveca na svetu :kiss: :heart: :heart: :heart:');
     } else if(cmd === 'ja') {
         let embed = new MessageEmbed();
         embed.setTitle(author);
