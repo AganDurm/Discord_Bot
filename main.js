@@ -31,10 +31,12 @@ client.on('message', async message => {
     const author = message.author.username.charAt(0).toUpperCase() + message.author.username.slice(1);
 
     const cmd = args.shift().toLowerCase();
+
     if(cmd === 'halo') {
         await message.channel.send("Halo " + author + ` :blush:`);
     } else if(cmd === 'ja') {
         let embed = new MessageEmbed();
+
         embed.setTitle(author);
         embed.setThumbnail(message.author.displayAvatarURL());
         embed.setColor('RANDOM');
@@ -42,6 +44,7 @@ client.on('message', async message => {
         await message.channel.send(embed);
     } else if(cmd === 'komande') {
         let embed = new MessageEmbed();
+
         embed.setColor('RANDOM');
         embed.setAuthor('Komande: ');
         embed.setDescription(
@@ -71,6 +74,7 @@ client.on('message', async message => {
         await message.channel.send(embedYT);
     } else {
         let embed = new MessageEmbed();
+
         embed.setAuthor('Greska: ');
         embed.setColor('RANDOM');
         embed.setDescription(message.content + ' nije komanda koju poznajem :confused:');
