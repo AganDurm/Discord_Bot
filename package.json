@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "nodemon main.js"
   },
   "author": "Agan Durmisevic",
   "license": "ISC",
@@ -14,5 +14,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "cluster": "^0.7.7",
+    "nodemon": "^2.0.6"
   }
 }
