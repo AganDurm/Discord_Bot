@@ -2,10 +2,10 @@
   "name": "durmex",
   "version": "0.0.1",
   "description": "DISCORD Bot",
-  "main": "main.js",
+  "main": "forever start -a main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon main.js"
+    "start": "forever start -a main.js"
   },
   "author": "Agan Durmisevic",
   "license": "ISC",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "cluster": "^0.7.7",
+    "forever": "^3.0.2",
     "nodemon": "^2.0.6"
   }
 }
