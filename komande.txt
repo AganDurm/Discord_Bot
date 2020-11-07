@@ -1,0 +1,11 @@
+!halo - pozdrav
+!ja - informacije o tebi
+!instagram - Instagram od Fajte
+!youtube - YouTube kanal od Fajte
+!server - Informacije o serveru
+!izbor - Izbir sta da se strima
+!rezultat - Rezultat izbora/glasanja
+!livesmo - Kada je Fajta live reklama
+!bot - Informacije o meni
+!komande - Moje komande
+!status - Moj status, koliko sam puta korsiten
