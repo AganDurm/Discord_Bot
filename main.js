@@ -1,7 +1,15 @@
+const express = require('express');
+const app = express();
 const { Client } = require('discord.js');
 const { config } = require('dotenv');
 const { handler } = require('./handler/commandsHandler.js');
 const  { checkIfNotAllowed } = require('./handler/blackListHandler');
+
+const port = process.env.PORT || 8080;
+app.use(express.static(__dirname));
+app.listen(port);
+console.log('Server listening!');
+
 const client = new Client({
     disableMentions: 'everyone'
 });
