@@ -17,26 +17,21 @@ async function handler(message, command) {
             await getDataFromUser(message);
             break;
         case 'instagram':
-            message.delete({timeout: 300});
             await getInstagramData(message);
             break;
         case 'youtube':
-            message.delete({timeout: 300});
             await getYoutubeData(message);
             break;
         case 'server':
             getInfoAboutServer(message);
             break;
         case 'izbor':
-            message.delete({timeout: 300});
             createPool(message);
             break;
         case 'rezultat':
-            message.delete({timeout: 300});
             await stopPool(message);
             break;
         case 'livesmo':
-            message.delete({timeout: 300});
             await sendLive(message);
             break;
         case 'bot':
@@ -49,7 +44,6 @@ async function handler(message, command) {
             await getRandomPersonImage(message);
             break;
         case 'status':
-            message.delete({timeout: 300});
             await message.channel.send('Koristen sam samo ' + callCounter + ' puta :confused: ');
             break;
         default:
