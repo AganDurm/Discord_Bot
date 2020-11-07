@@ -11,7 +11,7 @@ app.listen(port);
 app.use(express.static(__dirname));
 
 
-console.log('Server je online!');
+console.log('Server je online!' + ' Port: ' + port);
 
 const client = new Client({
     disableMentions: 'everyone'
