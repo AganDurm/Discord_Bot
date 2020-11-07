@@ -6,13 +6,16 @@ function getMessageAuthor(message) {
 }
 
 async function getInstagramData(message) {
-    let url = await fetch('https://www.instagram.com/_fajta/?__a=1').then(url => url.json());
-    let embed = new MessageEmbed()
-        .addField(await url.graphql.user.full_name,'Zapratite me i na Insta')
-        .addField('Link:', 'https://www.instagram.com/_fajta/')
-        .setThumbnail(await url.graphql.user.profile_pic_url)
-        .setColor("BLUE");
-    await message.channel.send(embed);
+    await fetch('https://www.instagram.com/_fajta/?__a=1')
+        .then(url => url.json()).then((url) => {
+            let embed = new MessageEmbed()
+                .addField(url.graphql.user.full_name,'Zapratite me i na Insta')
+                .addField('Link:', 'https://www.instagram.com/_fajta/')
+                .setThumbnail(url.graphql.user.profile_pic_url)
+                .setColor("BLUE");
+            message.channel.send(embed);
+        })
+        .then(() => console.log('!instagram'));
 }
 
  async function getYoutubeData(message) {
@@ -21,7 +24,7 @@ async function getInstagramData(message) {
         .addField('Link:', 'https://www.youtube.com/channel/UCbvmgMOvIFLU0-FYaFr_goQ')
         .setThumbnail('https://www.android-user.de/wp-content/uploads/2014/02/33799-youtube-icon_max.png')
         .setColor("RED");
-    await message.channel.send(embedYT);
+    await message.channel.send(embedYT).then(() => console.log('!youtube'));
 }
 
 async function getDataFromUser(message) {
