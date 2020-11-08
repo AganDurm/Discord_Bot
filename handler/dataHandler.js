@@ -13,9 +13,9 @@ async function getInstagramData(message) {
                 .addField('Link:', 'https://www.instagram.com/_fajta/')
                 .setThumbnail(url.graphql.user.profile_pic_url)
                 .setColor("BLUE");
-            message.channel.send(embed);
+            message.channel.send(embed);ö
         })
-        .then(() => console.log('!instagram'));
+        .catch(onerror => console.log(onerror));
 }
 
  async function getYoutubeData(message) {
