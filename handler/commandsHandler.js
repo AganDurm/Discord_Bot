@@ -23,7 +23,7 @@ async function handler(message, command) {
                     .addField('Link:', process.env.INSTAGRAM)
                     .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png')
                     .setColor("RED");
-                message.channel.send(embedYT).then(() => console.log('!instahram'));
+                message.channel.send(embedYT).then(() => console.log('!instagram'));
             });
             break;
         case 'youtube':
