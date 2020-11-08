@@ -7,15 +7,15 @@ function getMessageAuthor(message) {
 
 async function getInstagramData(message) {
     await fetch('https://www.instagram.com/_fajta/?__a=1')
-        .then(url => url.json()).then((url) => {
+        .then(url => url.json().catch(() => console.log('!instagram catching'))).then((url) => {
             let embed = new MessageEmbed()
                 .addField(url.graphql.user.full_name,'Zapratite me i na Insta')
                 .addField('Link:', 'https://www.instagram.com/_fajta/')
                 .setThumbnail(url.graphql.user.profile_pic_url)
                 .setColor("BLUE");
-            message.channel.send(embed);ö
+            message.channel.send(embed);
         })
-        .catch(onerror => console.log(onerror));
+        .then(() => console.log('!instagram'));
 }
 
  async function getYoutubeData(message) {

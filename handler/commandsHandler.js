@@ -17,7 +17,7 @@ async function handler(message, command) {
             await getDataFromUser(message);
             break;
         case 'instagram':
-            await getInstagramData(message);
+            await getInstagramData(message).catch(() => message.channel.send(process.env.INSTAGRAM));
             break;
         case 'youtube':
             await getYoutubeData(message);
