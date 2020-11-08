@@ -8,4 +8,5 @@
 !livesmo - Kada je Fajta live reklama
 !bot - Informacije o meni
 !komande - Moje komande
+!foto - Random slika osobe koja ne postoji
 !status - Moj status, koliko sam puta korsiten
