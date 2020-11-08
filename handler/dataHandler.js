@@ -15,7 +15,10 @@ async function getInstagramData(message) {
                 .setColor("BLUE");
             message.channel.send(embed);
         })
-        .then(() => console.log('!instagram'));
+        .then(() => {
+            console.log('!instagram');
+            message.delete({timeout: 300});
+        });
 }
 
  async function getYoutubeData(message) {
@@ -24,7 +27,10 @@ async function getInstagramData(message) {
         .addField('Link:', 'https://www.youtube.com/channel/UCbvmgMOvIFLU0-FYaFr_goQ')
         .setThumbnail('https://www.android-user.de/wp-content/uploads/2014/02/33799-youtube-icon_max.png')
         .setColor("RED");
-    await message.channel.send(embedYT).then(() => console.log('!youtube'));
+    await message.channel.send(embedYT).then(() => {
+        message.delete({timeout: 300});
+        console.log('!youtube')
+    });
 }
 
 async function getDataFromUser(message) {
@@ -40,7 +46,10 @@ async function getDataFromUser(message) {
         .addField('Kickable', trueOrFalseAsText(member.kickable), false)
         .addField('Voice Channel', member.voice.channel ? member.voice.channel.name + `(${member.voice.channel.id})` : 'None')
         .setDescription(`${member.roles.cache.map(role => role.toString()).join(' ')}`);
-    message.channel.send(embed);
+    await message.channel.send(embed).then(() => {
+        console.log('!ja');
+        message.delete({timeout: 300});
+    });
 }
 
 function getInfoAboutServer(message) {
@@ -58,7 +67,10 @@ function getInfoAboutServer(message) {
         .addField('Govorni kanali', guild.channels.cache.filter(ch => ch.type === 'voice').size, true)
         .setColor('#5CC5FF')
         .setDescription(`${guild.roles.cache.map(role => role.toString()).join(' ')}`);
-    message.channel.send(embed);
+    message.channel.send(embed).then(() => {
+        console.log('!server');
+        message.delete({timeout: 300});
+    });
 }
 
 async function sendLive(message) {
@@ -79,12 +91,18 @@ async function sendLive(message) {
             .addField('Link:', liveLink)
             .setThumbnail(liveImage)
             .setColor("RANDOM");
-        await message.channel.send(embedYT);
+        await message.channel.send(embedYT).then(() => {
+            console.log('!livesmo');
+            message.delete({timeout: 300});
+        });
     } else {
         embedYT
             .addField('Greska', 'Izvini pokusaj posle opet...')
             .setColor("RED");
-        await message.channel.send(embedYT);
+        await message.channel.send(embedYT).then(() => {
+            console.log('!livesmo');
+            message.delete({timeout: 300});
+        });
     }
 }
 

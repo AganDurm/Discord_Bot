@@ -30,7 +30,10 @@ async function handler(message, command) {
             await getYoutubeData(message);
             break;
         case 'server':
-            getInfoAboutServer(message);
+            getInfoAboutServer(message).catch(() => {
+                console.log('!server');
+                message.channel.send("!server moze samo Fajta");
+            });
             break;
         case 'izbor':
             createPool(message);
@@ -48,16 +51,19 @@ async function handler(message, command) {
             getBotOwnerData(message);
             break;
         case 'komande':
-            getCommands(message);
+            getCommands(message).catch(() => console.log("!komande -> datoteka nije pronadjena"));
             break;
         case 'foto':
-            await getRandomPersonImage(message);
+            await getRandomPersonImage(message).catch(() => {
+                console.log('!foto');
+                message.channel.send("Trenutno slike nisu dostupne...")
+            });
             break;
         case 'status':
             await message.channel.send('Koristen sam samo ' + callCounter + ' puta :confused: ');
             break;
         default:
-            await chatBot(message, command).catch(() => message.channel.send('Polako bre, brzo kucas'));
+            await chatBot(message, command).catch(() => message.channel.send('Polako bre, brzo kucas')).catch(() => console.log("!greska"));
             break;
     }
 }
@@ -70,15 +76,15 @@ function getCommands(message) {
     let embed = new MessageEmbed()
         .attachFiles('./komande.txt')
         .setFooter('Procitaj komande koje mozes koristi ovdje.');
-    message.channel.send(embed);
+    message.channel.send(embed).then(() => console.log("!komande"));
 }
 
 function getBotOwnerData(message) {
     const embed = new MessageEmbed()
-        .setAuthor('Agan Durmisevic', 'https://www.durmex.de/img/durmex.jpg')
-        .setTitle("durmex Bot")
-        .addField('Programiran: ', '21.09.2020', false);
-    message.channel.send(embed);
+        .setAuthor('FAJTA-Bot', 'https://www.durmex.de/img/durmex.jpg')
+        .setTitle("Agan Durmisevic")
+        .addField('Programirao: ', '21.09.2020', false);
+    message.channel.send(embed).then(() => console.log('!bot'));
 }
 
 async function chatBot(message, cmd) {
