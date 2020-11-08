@@ -17,7 +17,14 @@ async function handler(message, command) {
             await getDataFromUser(message);
             break;
         case 'instagram':
-            await getInstagramData(message).catch(() => message.channel.send(process.env.INSTAGRAM));
+            await getInstagramData(message).catch(() => {
+                let embedYT = new MessageEmbed()
+                    .addField('Fajta','Zapratite me na Insta')
+                    .addField('Link:', process.env.INSTAGRAM)
+                    .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png')
+                    .setColor("RED");
+                message.channel.send(embedYT).then(() => console.log('!youtube'));
+            });
             break;
         case 'youtube':
             await getYoutubeData(message);
