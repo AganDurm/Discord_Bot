@@ -4,15 +4,6 @@ const { config } = require('dotenv');
 const { handler } = require('./handler/commandsHandler.js');
 const  { checkIfNotAllowed } = require('./handler/blackListHandler');
 
-var app = express();
-const port = process.env.PORT || 8080;
-
-app.listen(port);
-app.use(express.static(__dirname));
-
-
-console.log('Server je online!' + ' Port: ' + port);
-
 const client = new Client({
     disableMentions: 'everyone'
 });
@@ -20,9 +11,9 @@ const client = new Client({
 config({
     path: __dirname + "/.env"
 });
+
 const PREFIX = process.env.PREFIX;
 const MESSAGE_TO_DELETE = process.env.MESSAGE_TO_DELETE;
-client.login(process.env.TOKEN).then();
 
 client.on('ready', () => {
     console.log(`${client.user.tag} je ONLINE`);
@@ -46,3 +37,5 @@ client.on('message', async message => {
         await handler(message, message.content.slice(1));
     }
 });
+
+client.login(process.env.TOKEN).then();
