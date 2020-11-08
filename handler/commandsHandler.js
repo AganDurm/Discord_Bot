@@ -23,7 +23,7 @@ async function handler(message, command) {
                     .addField('Link:', process.env.INSTAGRAM)
                     .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png')
                     .setColor("RED");
-                message.channel.send(embedYT).then(() => console.log('!youtube'));
+                message.channel.send(embedYT).then(() => console.log('!instahram'));
             });
             break;
         case 'youtube':
@@ -39,7 +39,10 @@ async function handler(message, command) {
             await stopPool(message);
             break;
         case 'livesmo':
-            await sendLive(message);
+            await sendLive(message).catch(() => {
+                getYoutubeData(message);
+                message.channel.send('Fajta je live, brzo svi na njegov YouTube kanal')
+            });
             break;
         case 'bot':
             getBotOwnerData(message);
@@ -54,7 +57,7 @@ async function handler(message, command) {
             await message.channel.send('Koristen sam samo ' + callCounter + ' puta :confused: ');
             break;
         default:
-            await chatBot(message, command);
+            await chatBot(message, command).catch(() => message.channel.send('Polako bre, brzo kucas'));
             break;
     }
 }
