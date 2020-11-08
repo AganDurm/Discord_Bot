@@ -67,8 +67,8 @@ function getInfoAboutServer(message) {
         .addField('Govorni kanali', guild.channels.cache.filter(ch => ch.type === 'voice').size, true)
         .setColor('#5CC5FF')
         .setDescription(`${guild.roles.cache.map(role => role.toString()).join(' ')}`);
-    message.channel.send(embed).then(() => {
-        console.log('!server');
+    message.channel.send(embed).catch(() => {
+        console.log('!server catching');
         message.delete({timeout: 300});
     });
 }

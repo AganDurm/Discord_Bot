@@ -30,10 +30,7 @@ async function handler(message, command) {
             await getYoutubeData(message);
             break;
         case 'server':
-            getInfoAboutServer(message).catch(() => {
-                console.log('!server');
-                message.channel.send("!server moze samo Fajta");
-            });
+            getInfoAboutServer(message);
             break;
         case 'izbor':
             createPool(message);
