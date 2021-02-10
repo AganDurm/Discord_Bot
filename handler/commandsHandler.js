@@ -89,9 +89,9 @@ function getBotOwnerData(message) {
 
 function todi(message) {
     const embed = new MessageEmbed()
-        .setTitle("INFORMACIJA ZA TEBE: ");
-        .setThumbnail(message.author.displayAvatarURL());
-        .setColor('RANDOM');
+        .setTitle("INFORMACIJA ZA TEBE: ")
+        .setThumbnail(message.author.displayAvatarURL())
+        .setColor('RANDOM')
         .setDescription("Todi je najbolji igrač na svetu!");
   message.channel.send(embed);
 }
