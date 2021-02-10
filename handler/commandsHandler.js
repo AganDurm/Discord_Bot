@@ -59,6 +59,9 @@ async function handler(message, command) {
         case 'status':
             await message.channel.send('Koristen sam samo ' + callCounter + ' puta :confused: ');
             break;
+        case 'todi':
+            todi(message);
+            break;
         default:
             await chatBot(message, command).catch(() => message.channel.send('Polako bre, brzo kucas')).catch(() => console.log("!greska"));
             break;
@@ -82,6 +85,15 @@ function getBotOwnerData(message) {
         .setTitle("Agan Durmisevic")
         .addField('Programirao: ', '21.09.2020', false);
     message.channel.send(embed).then(() => console.log('!bot'));
+}
+
+function todi(message) {
+    const embed = new MessageEmbed()
+        .setTitle("INFORMACIJA ZA TEBE: ");
+        .setThumbnail(message.author.displayAvatarURL());
+        .setColor('RANDOM');
+        .setDescription("Todi je najbolji igrač na svetu!");
+  message.channel.send(embed);
 }
 
 async function chatBot(message, cmd) {
