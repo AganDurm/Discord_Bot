@@ -101,7 +101,7 @@ async function chatBot(message, cmd) {
     if(cmd.endsWith('?') || cmd.endsWith('<') || cmd.endsWith('>')) {
         command = cmd.slice(0, -1);
     }
-    let request = await fetch(process.env.CHAT_BOT_API+command).then(response => response.json());
+    let request = await fetch(process.env.CHAT_BOT_API+command+'&key='+process.env.BOT_KEY).then(response => response.json());
     let answerMessage = await request.response;
     message.channel.send(answerMessage).catch(r => console.log(r));
 }
