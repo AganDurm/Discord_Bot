@@ -80,7 +80,7 @@ async function handler(message, command) {
             await message.channel.send('Koristen sam samo ' + callCounter + ' puta :confused: ');
             break;
         default:
-            await noCmd(message).catch(() => message.channel.send('Polako bre, brzo kucas')).catch(() => console.log("!greska"));
+            await noCmd(message).catch();
             break;
     }
 }
