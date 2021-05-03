@@ -16,14 +16,14 @@ const PREFIX = process.env.PREFIX;
 const MESSAGE_TO_DELETE = process.env.MESSAGE_TO_DELETE;
 
 client.on('ready', () => {
-    console.log(`${client.user.tag} je ONLINE`);
+    console.log(`${client.user.tag} je ONLINE :)`);
     client.user.setPresence({
         status: "online"
     }).catch(r => console.log(r));
 });
 
 client.on('message', async message => {
-    if(message.author.bot || !message.content.startsWith(PREFIX) || !message.content.startsWith('?')) {
+    if(message.author.bot || !message.content.startsWith(PREFIX) && !message.content.startsWith('?')) {
         checkIfNotAllowed(message);
         return;
     } else if (message.content.toLowerCase().startsWith(PREFIX + "obrisi")) {

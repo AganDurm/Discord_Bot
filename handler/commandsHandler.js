@@ -5,7 +5,7 @@ const { getDataFromUser, getInstagramData, getYoutubeData, getInfoAboutServer, s
 
 let callCounter = 0;
 let insultsArray = [
-    " samo nastavi da pišeš, u nekada ćeš napisati i nešto korisno 😅",
+    " samo nastavi da pišeš i nekada ćeš napisati i nešto korisno 😅",
     " mislim da si glup, ali budimo iskreni, ne misle svi tako pozitivno o tebi 😁",
     " da li te roditelji stvarno nikada nisu pitali da pobegneš od kuće? 😳",
     " ti uspevaš da nas nateraš da cenimo ove članove što nikada ne pišu u čat 😂",
@@ -21,11 +21,11 @@ let insultsArray = [
 ];
 
 async function insult(message, command) {
-    console.log(command);
     const author = getMessageAuthor(message);
-    await message.channel.send(author + insultsArray[Math.floor(Math.random() * insultsArray.length)]);
+    await message.channel.send(author + insultsArray[Math.floor(Math.random() * insultsArray.length)].toString());
 }
 async function handler(message, command) {
+    console.log(command);
     callCounter++;
     const author = getMessageAuthor(message);
 
