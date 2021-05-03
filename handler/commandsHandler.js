@@ -4,7 +4,27 @@ const { stopPool, createPool } = require('./poolHandler');
 const { getDataFromUser, getInstagramData, getYoutubeData, getInfoAboutServer, sendLive } = require('./dataHandler');
 
 let callCounter = 0;
+let insultsArray = [
+    " samo nastavi da pišeš, u nekada ćeš napisati i nešto korisno 😅",
+    " mislim da si glup, ali budimo iskreni, ne misle svi tako pozitivno o tebi 😁",
+    " da li te roditelji stvarno nikada nisu pitali da pobegneš od kuće? 😳",
+    " ti uspevaš da nas nateraš da cenimo ove članove što nikada ne pišu u čat 😂",
+    " tvoje lice izgleda isto kao da si spavao u njemu a ne u krevetu 😆",
+    " ti si kao ponedeljak. Niko te ne voli 🙄",
+    " kada progutaš muvu, u tvom stomaku ima više mozga nego u tvojoj glavi 🥱",
+    " izgledaš kao loš pokušaj. Da li su tvoji roditelji hemičari? 🤔",
+    " bolje bi bilo da su tvoji roditelji otišli 5 minuta da šetaju 🤭",
+    " da te je Kurt Cobain poznavao, ponovo bi se upucao! 🤣",
+    " kad vidim tvoje lice, sve mi se više sviđa moje dupe 🤭",
+    " imaš taman toliko moždanih ćelija da ne sereš u dnevnu sobu 🤣",
+    " toliko si mutav i Mister Bin je ljubomoran 😅"
+];
 
+async function insult(message, command) {
+    console.log(command);
+    const author = getMessageAuthor(message);
+    await message.channel.send(author + insultsArray[Math.floor(Math.random() * insultsArray.length)]);
+}
 async function handler(message, command) {
     callCounter++;
     const author = getMessageAuthor(message);
@@ -52,7 +72,6 @@ async function handler(message, command) {
             break;
         case 'foto':
             await getRandomPersonImage(message).catch(() => {
-                console.log('!foto');
                 message.channel.send("Trenutno slike nisu dostupne...")
             });
             break;
@@ -116,4 +135,4 @@ async function getRandomPersonImage(message) {
     await message.channel.send(embed);
 }
 
-module.exports = { handler };
+module.exports = { handler, insult };

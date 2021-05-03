@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js"
   },
-  "author": "Agan Durmisevic",
-  "license": "ISC",
+  "author": "durmex",
   "dependencies": {
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
