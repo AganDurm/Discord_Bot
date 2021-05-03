@@ -12,7 +12,8 @@
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "translate-api": "^0.3.18"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

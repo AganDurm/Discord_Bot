@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const { stopPool, createPool } = require('./poolHandler');
 const { getDataFromUser, getInstagramData, getYoutubeData, getInfoAboutServer, sendLive } = require('./dataHandler');
+const translate = require('translate-api');
 
 let callCounter = 0;
 let insultsArray = [
@@ -78,11 +79,8 @@ async function handler(message, command) {
         case 'status':
             await message.channel.send('Koristen sam samo ' + callCounter + ' puta :confused: ');
             break;
-        case 'todi':
-            todi(message);
-            break;
         default:
-            await chatBot(message, command).catch(() => message.channel.send('Polako bre, brzo kucas')).catch(() => console.log("!greska"));
+            await noCmd(message).catch(() => message.channel.send('Polako bre, brzo kucas')).catch(() => console.log("!greska"));
             break;
     }
 }
@@ -106,6 +104,16 @@ function getBotOwnerData(message) {
     message.channel.send(embed).then(() => console.log('!bot'));
 }
 
+async function noCmd(message) {
+    let embed = new MessageEmbed();
+    embed.setAuthor('Greska: ');
+    embed.setColor('RANDOM');
+    embed.setDescription(message.content + ' nije komanda koju poznajem :confused:');
+    embed.setThumbnail('https://cdn.icon-icons.com/icons2/1465/PNG/512/756exclamationmark_100528.png');
+    embed.setFooter('Kucaj !komande da vidis listu mojih komandi');
+    await message.channel.send(embed);
+}
+
 function todi(message) {
     const embed = new MessageEmbed()
         .setTitle("INFORMACIJA ZA TEBE: ")
@@ -122,7 +130,10 @@ async function chatBot(message, cmd) {
     }
     let request = await fetch(process.env.CHAT_BOT_API+command+'&key='+process.env.BOT_KEY).then(response => response.json());
     let answerMessage = await request.response;
-    message.channel.send(answerMessage).catch(r => console.log(r));
+    await translate.getText(answerMessage,{to: 'hr'}).then((text) => {
+        console.log(text);
+        message.channel.send(text);
+    });
 }
 
 async function getRandomPersonImage(message) {
